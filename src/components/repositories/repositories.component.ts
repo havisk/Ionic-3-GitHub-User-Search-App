@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import {Repository} from '../../models/repository.interface'
+import { Repository } from '../../models/repository.interface'
 
 
 @Component({
   selector: 'repositories',
-  templateUrl: 'repositories.html'
+  templateUrl: 'repositories.component.html'
 })
 export class RepositoriesComponent {
 
-  @Input() repositories: Repository;
+  @Input() repository: Repository;
 
 
 }

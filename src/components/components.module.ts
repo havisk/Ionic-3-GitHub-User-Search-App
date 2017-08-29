@@ -8,10 +8,11 @@ import { RepositoriesComponent } from './repositories/repositories.component';
  @NgModule ({
 	declarations: [
 	  SearchResultsComponent,
-    RepositoriesComponent
+    RepositoriesComponent,
   ],
 	imports: [
 	  IonicModule,
+
   ],
 	exports: [
 	  SearchResultsComponent,

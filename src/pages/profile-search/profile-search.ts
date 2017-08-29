@@ -12,7 +12,7 @@ export class ProfileSearchPage {
 
   username: string;
 
-  constructor(private navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams) {
   }
 
   getUserInformation(): void {
