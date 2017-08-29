@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 
-@IonicPage()
+@IonicPage({
+  segment: 'profile-search'
+})
 @Component({
   selector: 'page-profile-search',
   templateUrl: 'profile-search.html',

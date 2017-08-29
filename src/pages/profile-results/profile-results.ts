@@ -5,7 +5,9 @@ import {User} from '../../models/user.interface';
 import {Repository} from "../../models/repository.interface";
 
 
-@IonicPage()
+@IonicPage({
+  segment: 'profile/results/:username'
+})
 @Component({
   selector: 'page-profile-results',
   templateUrl: 'profile-results.html',
