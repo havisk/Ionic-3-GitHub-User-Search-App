@@ -1,4 +1,4 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+This App connects to the Github API and upon entering the users name.  It will show the users information and repositories
 
 ## How to use this template
 
