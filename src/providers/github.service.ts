@@ -19,6 +19,7 @@ import {REPOSITORY_LIST} from "../mocks/repository.mocks";
 @Injectable()
 export class GithubServiceProvider {
   private baseUrl: string = "http://api.github.com/users";
+  private reposUrl: string = "repos";
 
   constructor(private  http: Http) {
     console.log('Hello GithubServiceProvider Provider');
@@ -26,11 +27,19 @@ export class GithubServiceProvider {
 
   getUserInformation(username: string): Observable<User> {
     return this.http.get(`${this.baseUrl}/${username}`)
-      .do((data: Response) => console.log(data))
-      .map((data: Response) => data.json())
-      .do((data: Response) => console.log(data))
-      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
+      .do(this.logData)
+      .map(this.extractData)
+      .do(this.logData)
+      .catch(this.handleError)
   }
+
+  getRepositoryInformation(username: string): Observable<Repository[]> {
+    return this.http.get(`${this.baseUrl}/${username}/${this.reposUrl}`)
+      .do(this.logData)
+      .map(this.extractData)
+      .do(this.logData)
+      .catch(this.handleError)
+}
 
   /* finding the username from USER_LIST. equals username passed in
   returning results as observable */
@@ -43,6 +52,18 @@ export class GithubServiceProvider {
    returning results as observable */
   mockGetRepositoryInformation(username: string): Observable<Repository[]> {
     return Observable.of(REPOSITORY_LIST.filter(repository => repository.owner.name === username))
+  }
+
+  private logData(response: Response) {
+    console.log(response);
+  }
+
+  private extractData(response: Response){
+    return response.json();
+  }
+
+  private handleError(error: Response | any) {
+    return Observable.throw(error.json().error || "Server error.");
   }
 
 }
